@@ -31,6 +31,6 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: setup surge
       run: npm install --global surge
-      -name: Deploy
+      - name: Deploy
       run: surge ./ squalid-cub.surge.sh --token ${{secrets.SURGE_TOKEN}}
 
