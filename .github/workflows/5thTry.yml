@@ -1,0 +1,27 @@
+# This is a basic workflow to help you get started with Actions
+
+name: 5th Try
+on:
+  push:
+    branches: 
+    - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: '12'
+    - uses: borales/actions-yarn@v2.0.0 
+    with:
+    cmd: install
+    - name: build react App
+      run: yarn build
+    - name: Setup Surge
+      run: npm install --global surge
+      - use:  Execute Deployment with Surge      
+      run: surge ./ http://squalid-cub.surge.sh/ --token ${{secrets.SURGE_TOKEN}}      
+ 
+
